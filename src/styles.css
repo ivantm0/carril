@@ -1,0 +1,64 @@
+@import '@ivantm0/trazo/tokens.css';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--trz-color-bg);
+  color: var(--trz-color-text);
+  font-family: var(--trz-font-sans);
+  font-size: 100%;
+  -webkit-font-smoothing: antialiased;
+  scrollbar-color: var(--trz-color-border-strong) transparent;
+}
+
+body {
+  margin: 0;
+  background: var(--trz-color-bg);
+  line-height: var(--trz-leading-normal);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--trz-color-primary) 28%, transparent);
+  color: var(--trz-color-text);
+}
+
+input,
+textarea {
+  caret-color: var(--trz-color-primary);
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* La tarjeta que se arrastra se dibuja fuera del componente, en el body */
+.cdk-drag-preview {
+  border-radius: var(--trz-radius-md);
+  box-shadow: var(--trz-shadow-lg);
+  transform-origin: center;
+  rotate: -1.5deg;
+  list-style: none;
+}
+
+.cdk-drag-preview .card {
+  border-color: var(--trz-color-primary);
+  cursor: grabbing;
+}
+
+.cdk-drag-animating {
+  transition: transform var(--trz-duration-slow) var(--trz-ease);
+}
+
+body:has(.cdk-drag-preview) {
+  cursor: grabbing;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cdk-drag-preview {
+    rotate: none;
+  }
+}
